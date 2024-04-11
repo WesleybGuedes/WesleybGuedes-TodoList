@@ -10,20 +10,20 @@ const addTask = () => {
   input.value = '';
 };
 
-const changeTaskColor = (event) => {
-  // Garante que nao tera a classe 'selected' em todos os itens da lista
+const selectedTask = (event) => {
+  // Seleciona todos os itens da lista a partir do momento que forem criados
   const allTasks = document.querySelectorAll('li');
+
+  // Remove a classe 'selected' de todos os itens da lista
   allTasks.forEach((task) => {
     task.classList.remove('selected');
   });
 
-  // Adiciona a classe 'selected' ao item clicado
+  // Adiciona a classe 'selected' apenas ao item clicado
   const clickedTask = event.target;
   clickedTask.classList.add('selected');
-
-  // Define a cor de fundo do item clicado para cinza
-  clickedTask.style.backgroundColor = 'gray';
 };
+
 // aproveitar essa logica para remover a tarefa selecionada
 
 /* const removeSelectedTask = () => {
@@ -35,16 +35,6 @@ const changeTaskColor = (event) => {
   });
 }; */
 
-const selectedOne = () => {
-  const allTasks = document.querySelectorAll('li');
-  allTasks.forEach((task) => {
-    if (task.classList.contains('selected')) {
-      task.classList.remove('selected');
-    }
-  });
-};
-
 button.addEventListener('click', addTask);
-list.addEventListener('click', changeTaskColor);
+list.addEventListener('click', selectedTask);
 // list.addEventListener('dblclick', removeSelectedTask);
-list.addEventListener('click', selectedOne);
