@@ -24,6 +24,27 @@ const changeTaskColor = (event) => {
   // Define a cor de fundo do item clicado para cinza
   clickedTask.style.backgroundColor = 'gray';
 };
+// aproveitar essa logica para remover a tarefa selecionada
+
+/* const removeSelectedTask = () => {
+  const allTasks = document.querySelectorAll('li');
+  allTasks.forEach((task) => {
+    if (task.classList.contains('selected')) {
+      task.remove();
+    }
+  });
+}; */
+
+const selectedOne = () => {
+  const allTasks = document.querySelectorAll('li');
+  allTasks.forEach((task) => {
+    if (task.classList.contains('selected')) {
+      task.classList.remove('selected');
+    }
+  });
+};
 
 button.addEventListener('click', addTask);
 list.addEventListener('click', changeTaskColor);
+// list.addEventListener('dblclick', removeSelectedTask);
+list.addEventListener('click', selectedOne);
