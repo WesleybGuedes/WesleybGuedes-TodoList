@@ -11,17 +11,18 @@ const addTask = () => {
 };
 
 const selectedTask = (event) => {
-  // Seleciona todos os itens da lista a partir do momento que forem criados
-  const allTasks = document.querySelectorAll('li');
-
   // Remove a classe 'selected' de todos os itens da lista
-  allTasks.forEach((task) => {
-    task.classList.remove('selected');
-  });
+  document.querySelectorAll('li').forEach((task) => task.classList.remove('selected'));
 
   // Adiciona a classe 'selected' apenas ao item clicado
+  event.target.classList.add('selected');
+};
+
+const completedTask = (event) => {
   const clickedTask = event.target;
-  clickedTask.classList.add('selected');
+
+  // Verifica se o elemento clicado já possui a classe 'completed' e alterna entre adicionar e remover
+  clickedTask.classList.toggle('completed');
 };
 
 // aproveitar essa logica para remover a tarefa selecionada
@@ -38,3 +39,4 @@ const selectedTask = (event) => {
 button.addEventListener('click', addTask);
 list.addEventListener('click', selectedTask);
 // list.addEventListener('dblclick', removeSelectedTask);
+list.addEventListener('dblclick', completedTask);
