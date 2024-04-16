@@ -1,6 +1,8 @@
-const button = document.querySelector('#criar-tarefa');
+const createTaskButton = document.querySelector('#criar-tarefa');
 const input = document.querySelector('#texto-tarefa');
 const list = document.querySelector('#lista-tarefas');
+const removeSelectedTaskButton = document.querySelector('#remover-selecionado');
+const removeAllTasksButton = document.querySelector('#apaga-tudo');
 
 const addTask = () => {
   const taskList = document.querySelector('#lista-tarefas');
@@ -27,16 +29,22 @@ const completedTask = (event) => {
 
 // aproveitar essa logica para remover a tarefa selecionada
 
-/* const removeSelectedTask = () => {
+const removeSelectedTask = () => {
   const allTasks = document.querySelectorAll('li');
   allTasks.forEach((task) => {
     if (task.classList.contains('selected')) {
       task.remove();
     }
   });
-}; */
+};
 
-button.addEventListener('click', addTask);
+const removeAllTasks = () => {
+  const allTasks = document.querySelectorAll('li');
+  allTasks.forEach((task) => task.remove());
+};
+
+createTaskButton.addEventListener('click', addTask);
 list.addEventListener('click', selectedTask);
-// list.addEventListener('dblclick', removeSelectedTask);
+removeSelectedTaskButton.addEventListener('click', removeSelectedTask);
 list.addEventListener('dblclick', completedTask);
+removeAllTasksButton.addEventListener('click', removeAllTasks);
