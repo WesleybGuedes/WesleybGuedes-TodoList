@@ -3,6 +3,7 @@ const input = document.querySelector('#texto-tarefa');
 const list = document.querySelector('#lista-tarefas');
 const removeSelectedTaskButton = document.querySelector('#remover-selecionado');
 const removeAllTasksButton = document.querySelector('#apaga-tudo');
+const removeCompletedTasksButton = document.querySelector('#remover-finalizados');
 
 const addTask = () => {
   const taskList = document.querySelector('#lista-tarefas');
@@ -43,8 +44,18 @@ const removeAllTasks = () => {
   allTasks.forEach((task) => task.remove());
 };
 
+const removeCompletedTasks = () => {
+  const allTasks = document.querySelectorAll('li');
+  allTasks.forEach((task) => {
+    if (task.classList.contains('completed')) {
+      task.remove();
+    }
+  });
+};
+
 createTaskButton.addEventListener('click', addTask);
 list.addEventListener('click', selectedTask);
 removeSelectedTaskButton.addEventListener('click', removeSelectedTask);
 list.addEventListener('dblclick', completedTask);
 removeAllTasksButton.addEventListener('click', removeAllTasks);
+removeCompletedTasksButton.addEventListener('click', removeCompletedTasks);
